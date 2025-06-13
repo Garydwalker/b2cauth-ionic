@@ -1,8 +1,12 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab3.css';
+import { useAuth } from '../hooks/useAuth';
 
 const Tab3: React.FC = () => {
+  const {  logout } = useAuth();
+
+  
   return (
     <IonPage>
       <IonHeader>
@@ -16,7 +20,9 @@ const Tab3: React.FC = () => {
             <IonTitle size="large">Tab 3</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Tab 3 page" />
+        <div>
+          <button onClick={ logout}>Logout</button>
+          </div>
       </IonContent>
     </IonPage>
   );

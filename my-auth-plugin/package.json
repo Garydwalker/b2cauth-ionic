@@ -1,0 +1,90 @@
+{
+   "name": "gwmsauthplugin",
+  "main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/esm/index.js"
+    }
+  },
+  "version": "0.0.1",
+  "description": "ms auth",
+  "unpkg": "dist/plugin.js",
+  "files": [
+    "android/src/main/",
+    "android/build.gradle",
+    "dist/",
+    "ios/Sources",
+    "ios/Tests",
+    "Package.swift",
+    "Gwmsauthplugin.podspec",
+    "src/"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://example.com.git"
+  },
+  "bugs": {
+    "url": "https://example.com/issues"
+  },
+  "keywords": [
+    "capacitor",
+    "plugin",
+    "native"
+  ],
+  "scripts": {
+    "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
+    "verify:ios": "xcodebuild -scheme Gwmsauthplugin -destination generic/platform=iOS",
+    "verify:android": "cd android && ./gradlew clean build test && cd ..",
+    "verify:web": "npm run build",
+    "lint": "npm run eslint && npm run prettier -- --check && npm run swiftlint -- lint",
+    "fmt": "npm run eslint -- --fix && npm run prettier -- --write && npm run swiftlint -- --fix --format",
+    "eslint": "eslint . --ext ts",
+    "prettier": "prettier \"**/*.{css,html,ts,js,java}\" --plugin=prettier-plugin-java",
+    "swiftlint": "node-swiftlint",
+    "docgen": "docgen --api msauthpluginPlugin --output-readme README.md --output-json dist/docs.json",
+    "build": "npm run clean && tsc && rollup -c rollup.config.mjs",
+    "clean": "rimraf ./dist",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^7.3.0",
+    "@capacitor/core": "^7.3.0",
+    "@capacitor/docgen": "^0.3.0",
+    "@capacitor/ios": "^7.3.0",
+    "@ionic/eslint-config": "^0.4.0",
+    "@ionic/prettier-config": "^4.0.0",
+    "@ionic/swiftlint-config": "^2.0.0",
+    "eslint": "^9.28.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-java": "^2.6.8",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.43.0",
+    "swiftlint": "^2.0.0",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "@capacitor/core": ">=7.0.0"
+  },
+  "prettier": "@ionic/prettier-config",
+  "swiftlint": "@ionic/swiftlint-config",
+ "dependencies": {
+    "@azure/msal-browser": "^4.13.1"
+  },
+  "eslintConfig": {
+    "extends": "@ionic/eslint-config/recommended"
+  },
+  "capacitor": {
+    "ios": {
+      "src": "ios"
+    },
+    "android": {
+      "src": "android"
+    }
+  }
+}
